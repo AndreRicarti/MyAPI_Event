@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using My.API_Event.Models;
@@ -9,56 +11,56 @@ namespace My.API_Event.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompaniesController : ControllerBase
+    public class AddressesController : ControllerBase
     {
         private readonly EventDbContext _context;
 
-        public CompaniesController(EventDbContext context)
+        public AddressesController(EventDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Companies
+        // GET: api/Addresses
         [HttpGet]
-        public IEnumerable<Company> GetCompanies()
+        public IEnumerable<Address> GetAddresses()
         {
-            return _context.Companies;
+            return _context.Addresses;
         }
 
-        // GET: api/Companies/5
+        // GET: api/Addresses/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCompany([FromRoute] int id)
+        public async Task<IActionResult> GetAddress([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var company = await _context.Companies.FindAsync(id);
+            var address = await _context.Addresses.FindAsync(id);
 
-            if (company == null)
+            if (address == null)
             {
                 return NotFound();
             }
 
-            return Ok(company);
+            return Ok(address);
         }
 
-        // PUT: api/Companies/5
+        // PUT: api/Addresses/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCompany([FromRoute] int id, [FromBody] Company company)
+        public async Task<IActionResult> PutAddress([FromRoute] int id, [FromBody] Address address)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != company.Id)
+            if (id != address.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(company).State = EntityState.Modified;
+            _context.Entry(address).State = EntityState.Modified;
 
             try
             {
@@ -66,7 +68,7 @@ namespace My.API_Event.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CompanyExists(id))
+                if (!AddressExists(id))
                 {
                     return NotFound();
                 }
@@ -79,45 +81,45 @@ namespace My.API_Event.Controllers
             return NoContent();
         }
 
-        // POST: api/Companies
+        // POST: api/Addresses
         [HttpPost]
-        public async Task<IActionResult> PostCompany([FromBody] Company company)
+        public async Task<IActionResult> PostAddress([FromBody] Address address)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Companies.Add(company);
+            _context.Addresses.Add(address);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCompany", new { id = company.Id }, company);
+            return CreatedAtAction("GetAddress", new { id = address.Id }, address);
         }
 
-        // DELETE: api/Companies/5
+        // DELETE: api/Addresses/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCompany([FromRoute] int id)
+        public async Task<IActionResult> DeleteAddress([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var company = await _context.Companies.FindAsync(id);
-            if (company == null)
+            var address = await _context.Addresses.FindAsync(id);
+            if (address == null)
             {
                 return NotFound();
             }
 
-            _context.Companies.Remove(company);
+            _context.Addresses.Remove(address);
             await _context.SaveChangesAsync();
 
-            return Ok(company);
+            return Ok(address);
         }
 
-        private bool CompanyExists(int id)
+        private bool AddressExists(int id)
         {
-            return _context.Companies.Any(e => e.Id == id);
+            return _context.Addresses.Any(e => e.Id == id);
         }
     }
 }

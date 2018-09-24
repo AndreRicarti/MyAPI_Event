@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\HomeController.cs" />
+    <Compile Remove="Controllers\ValuesController.cs" />
+    <Compile Remove="Controllers\ValuesController1.cs" />
     <Compile Remove="Migrations\20180924011142_Event.cs" />
     <Compile Remove="Migrations\20180924011142_Event.Designer.cs" />
     <Compile Remove="Migrations\20180924012242_Event.cs" />
