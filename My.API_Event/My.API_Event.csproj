@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20180924011142_Event.cs" />
+    <Compile Remove="Migrations\20180924011142_Event.Designer.cs" />
+    <Compile Remove="Migrations\20180924012242_Event.cs" />
+    <Compile Remove="Migrations\20180924012242_Event.Designer.cs" />
+    <Compile Remove="Migrations\20180924012632_Company.cs" />
+    <Compile Remove="Migrations\20180924012632_Company.Designer.cs" />
+    <Compile Remove="Migrations\20180924023033_Address.cs" />
+    <Compile Remove="Migrations\20180924023033_Address.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>
