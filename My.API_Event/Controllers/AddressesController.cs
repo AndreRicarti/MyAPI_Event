@@ -24,7 +24,14 @@ namespace My.API_Event.Controllers
         [HttpGet]
         public IEnumerable<Address> GetAddresses()
         {
-            return _context.Addresses;
+            try
+            {
+                return _context.Addresses;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         // GET: api/Addresses/5
@@ -85,15 +92,30 @@ namespace My.API_Event.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAddress([FromBody] Address address)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                if (address.Id != 0)
+                {
+                    address.Company = null;
+                }
+
+                _context.Addresses.Add(address);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetAddress", new { id = address.Id }, address);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
 
-            _context.Addresses.Add(address);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAddress", new { id = address.Id }, address);
+            
         }
 
         // DELETE: api/Addresses/5

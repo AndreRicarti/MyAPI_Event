@@ -7,7 +7,8 @@ namespace My.API_Event.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        public int CompanyId { get; set; }
+
         public Company Company { get; set; }
 
         [Required]

@@ -16,6 +16,8 @@
     <Compile Remove="Migrations\20180924012632_Company.Designer.cs" />
     <Compile Remove="Migrations\20180924023033_Address.cs" />
     <Compile Remove="Migrations\20180924023033_Address.Designer.cs" />
+    <Compile Remove="Migrations\20181001232836_Address_CompanyId.cs" />
+    <Compile Remove="Migrations\20181001232836_Address_CompanyId.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

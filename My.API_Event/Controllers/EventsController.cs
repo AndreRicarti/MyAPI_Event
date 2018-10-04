@@ -18,9 +18,9 @@ namespace My.API_Event.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IEnumerable<Event> Get()
         {
-            return new string[] { "value1", "value2" };
+            return eventRepository.GetAll();
         }
 
         // GET api/values/5
