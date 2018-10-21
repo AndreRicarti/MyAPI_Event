@@ -16,6 +16,9 @@ namespace My.API_Event.Models
         public string Title { get; set; }
 
         [Required]
+        public string Description { get; set; }
+
+        [Required]
         public DateTime DateStart { get; set; }
 
         [Required]

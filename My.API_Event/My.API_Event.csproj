@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aec5e934-fa7a-416a-a00b-19b296a627cd</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,8 @@
     <Compile Remove="Migrations\20180924023033_Address.Designer.cs" />
     <Compile Remove="Migrations\20181001232836_Address_CompanyId.cs" />
     <Compile Remove="Migrations\20181001232836_Address_CompanyId.Designer.cs" />
+    <Compile Remove="Migrations\20181021221957_Add-Description-Event.cs" />
+    <Compile Remove="Migrations\20181021221957_Add-Description-Event.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,11 +29,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.3">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
