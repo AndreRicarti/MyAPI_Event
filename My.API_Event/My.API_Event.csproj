@@ -21,6 +21,12 @@
     <Compile Remove="Migrations\20181001232836_Address_CompanyId.Designer.cs" />
     <Compile Remove="Migrations\20181021221957_Add-Description-Event.cs" />
     <Compile Remove="Migrations\20181021221957_Add-Description-Event.Designer.cs" />
+    <Compile Remove="Migrations\20181024004516_EventConfirmation.cs" />
+    <Compile Remove="Migrations\20181024004516_EventConfirmation.Designer.cs" />
+    <Compile Remove="Migrations\20181024004641_EventConfirmation.cs" />
+    <Compile Remove="Migrations\20181024004641_EventConfirmation.Designer.cs" />
+    <Compile Remove="Migrations\20181024010721_EventConfirmation.cs" />
+    <Compile Remove="Migrations\20181024010721_EventConfirmation.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
