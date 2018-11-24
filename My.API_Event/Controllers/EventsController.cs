@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using My.API_Event.Models;
@@ -34,6 +35,15 @@ namespace My.API_Event.Controllers
                 return NotFound();
 
             return new ObjectResult(@event);
+        }
+
+        // GET api/values/5
+        [HttpGet("GetDate/{date}")]
+        public IEnumerable<Event> GetDate(string date)
+        {
+            var @event = eventRepository.FindDate(date);
+
+            return @event;
         }
 
         // POST api/values
