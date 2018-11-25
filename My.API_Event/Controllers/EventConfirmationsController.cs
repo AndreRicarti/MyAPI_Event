@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using My.API_Event.Models;
@@ -17,6 +19,11 @@ namespace My.API_Event.Controllers
         {
             _context = context;
         }
+
+        readonly ApiError apiError = new ApiError()
+        {
+            Error = new Error()
+        };
 
         // GET: api/EventConfirmations
         [HttpGet]
@@ -86,6 +93,17 @@ namespace My.API_Event.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if (_context.EventConfirmations.Any(e => e.EventId == eventConfirmation.EventId && e.UserId == eventConfirmation.UserId))
+            {
+                apiError.Error = new Error
+                {
+                    Code = Convert.ToInt16(StatusCodes.Status422UnprocessableEntity).ToString(),
+                    Message = "Esse evento já esta confirmado para esse usuário."
+                };
+
+                return StatusCode(StatusCodes.Status422UnprocessableEntity, apiError);
             }
 
             if (eventConfirmation.EventId != 0)
